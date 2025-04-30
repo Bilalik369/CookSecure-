@@ -1,32 +1,62 @@
-import React from "react";
-import {BrowserRouter as Router , Route , Routes } from "react-router-dom";
-import {AuthContext } from "./context/AuthContext";
-import Nabar from "./components/Navbar";
-import Home from "./pages/Home";
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
+import Navbar from './components/Navbar';
+import ProtectedRoute from './components/ProtectedRoute';
+
+import Home from './pages/Home';
+import Login from './pages/Login';
+import Register from './pages/Register';
 import Recipes from './pages/Recipes';
 import AddRecipe from './pages/AddRecipe';
 import EditRecipe from './pages/EditRecipe';
-import Login from './pages/Login';
-import Register from './pages/Register';
-import ProtectedRoute from './components/ProtectedRoute';
 
+import { AuthProvider } from './context/AuthContext';
 
-const App =() =>{
+const App = () => {
+  return (
+    <AuthProvider>
+      <Router>
+        <Navbar />
+        <div className="container mx-auto p-4">
+          <Routes>
 
+           
+            <Route path="/" element={<Home />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
 
-  <Router>
-    <div className="container">
-      <Routes>
-      <Route path="/" element={<Home />} />
-      </Routes>
-    </div>
+           
+            <Route
+              path="/recipes"
+              element={
+                <ProtectedRoute>
+                  <Recipes />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/add"
+              element={
+                <ProtectedRoute allowedRoles={['admin']}>
+                  <AddRecipe />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/edit/:id"
+              element={
+                <ProtectedRoute allowedRoles={['admin']}>
+                  <EditRecipe />
+                </ProtectedRoute>
+              }
+            />
 
-
-  </Router>
-
-
-
-
-}
+          </Routes>
+        </div>
+      </Router>
+    </AuthProvider>
+  );
+};
 
 export default App;
