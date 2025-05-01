@@ -21,14 +21,20 @@ export const AuthProvider = ({children}) =>{
         localStorage.removeItem('user');
     };
 
+    const register = (userData) => {
+       
+        setUser(userData);
+        localStorage.setItem("user", JSON.stringify(userData));
+      };
+
     useEffect (() =>{
-//utilisée pour synchroniser l'état si besoin
+
     },[])
 
 
 
     return (
-        <AuthContext.Provider value={{ user, login, logout }}>
+        <AuthContext.Provider value={{ user, login, logout, register }}>
           {children}
         </AuthContext.Provider>
       );
