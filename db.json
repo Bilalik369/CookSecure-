@@ -1,0 +1,11 @@
+{
+    "recipes": [
+      {
+        "id": 1,
+        "title": "Couscous marocain",
+        "ingredients": "Semoule, légumes, viande",
+        "instructions": "Faire cuire le tout pendant 1h"
+      }
+    ]
+  }
+  
