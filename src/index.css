@@ -7,13 +7,14 @@
   box-shadow: 0px 4.42184px 107.23px rgba(158, 198, 255, 0.4);
 }
 
-.btn:hover {
-  background: linear-gradient(92.23deg, #fdcb82 21.43%, #f9d1d1 50.63%, #e0c3fc 100%, #8ec5fc 117.04%);
+.btn-gradient {
+  background: linear-gradient(92.23deg, #D5E5D5 21.43%, #C7D9DD 50.63%, #ADB2D4 100%);
+  box-shadow: 0px 4px 20px rgba(173, 178, 212, 0.4);
+  transition: background 0.3s ease;
 }
 
-.gradient,
-.active {
-  background: linear-gradient(92.23deg, #fdcb82 21.43%, #f9d1d1 50.63%, #e0c3fc 100%, #8ec5fc 117.04%);
+.btn-gradient:hover {
+  background: linear-gradient(92.23deg, #adb2d4 21.43%, #c7d9dd 50.63%, #d5e5d5 100%);
 }
 
 .active {
